@@ -6,15 +6,31 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 
 import { UserService } from './user.service';
+import { LoginComponent } from './login/login.component';
+import { RouterModule } from '@angular/router';
+
+const ROUTES = [
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
