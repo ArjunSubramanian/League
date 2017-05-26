@@ -22,6 +22,10 @@ app.use(bodyParser.urlencoded({
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect bootstrap CSS
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap-social')); // redirect bootstrap-social CSS
+app.use('/css', express.static(__dirname + '/node_modules/font-awesome/css')); // redirect font awesome CSS
+app.use('/fonts', express.static(__dirname + '/node_modules/font-awesome/fonts')); // redirect font awesome fonts
 
 // Set our api routes
 app.use('/api', api);
