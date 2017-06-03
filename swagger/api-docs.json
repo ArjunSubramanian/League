@@ -1,0 +1,117 @@
+{  
+   "swagger":"2.0",
+   "info":{  
+      "version":"1.0.0",
+      "title":"League API Spec",
+      "description":"Spec for League API",
+      "termsOfService":""
+   },
+   "basePath":"/",
+   "tags":[  
+      {  
+         "name":"User",
+         "description":"API for operations on User"
+      }
+   ],
+   "schemes":[  
+      "http"
+   ],
+   "consumes":[  
+      "application/json"
+   ],
+   "produces":[  
+      "application/json"
+   ],
+   "paths":{  
+      "/api/users":{  
+         "get":{  
+            "tags":[  
+               "User"
+            ],
+            "description":"Returns a list of all users",
+            "operationId":"findAll",
+            "produces":[  
+               "application/json"
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"response",
+                  "schema":{  
+                     "$ref":"#/definitions/User"
+                  }
+               }
+            }
+         }
+      },
+      "/api/user":{  
+         "post":{  
+            "tags":[  
+               "User"
+            ],
+            "description":"Create a user",
+            "operationId":"createUser",
+            "produces":[  
+               "application/json"
+            ],
+            "parameters":[  
+               {  
+                  "name":"name",
+                  "in":"body",
+                  "description":"Name of the user",
+                  "required":true,
+                  "type":"string"
+               },
+               {  
+                  "name":"username",
+                  "in":"body",
+                  "description":"Username of the user",
+                  "required":true,
+                  "type":"string"
+               },
+               {  
+                  "name":"password",
+                  "in":"body",
+                  "description":"Password of the user",
+                  "required":true,
+                  "type":"string"
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"create response"
+               }
+            }
+         }
+      }
+   },
+   "definitions":{  
+      "User":{  
+         "properties":{  
+            "name":{  
+               "required":true,
+               "type":"string",
+               "example":"John"
+            },
+            "username":{  
+               "required":true,
+               "unique":true,
+               "type":"string",
+               "example":"john123"
+            },
+            "password":{  
+               "required":true,
+               "type":"string",
+               "example":"password"
+            }
+         }
+      },
+      "400error":{  
+         "properties":{  
+            "message":{  
+               "type":"string",
+               "example":"400 Bad Request"
+            }
+         }
+      }
+   }
+}
