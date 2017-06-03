@@ -2,12 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { EqualValidatorDirective } from './shared/equal-validator.directive';
 
 import { UserService } from './user.service';
-import { LoginComponent } from './login/login.component';
-import { RouterModule } from '@angular/router';
 
 const ROUTES = [
   {
@@ -18,13 +20,19 @@ const ROUTES = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'signup',
+    component: SignUpComponent
   }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent,
+    EqualValidatorDirective
   ],
   imports: [
     BrowserModule,
